@@ -3,7 +3,7 @@ const fs = require('fs');
 
 let server = http.createServer((req, res) => {
   res.statusCode = '200';
-  res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type"); 
   res.setHeader('Content-Type', 'application/json');
   // res.end('{"name": "hello"}');
