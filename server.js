@@ -1,25 +1,54 @@
-const http = require('http');
+// const http = require('http');
+// const fs = require('fs');
+
+// let server = http.createServer((req, res) => {
+//   res.statusCode = '200';
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type"); 
+//   res.setHeader('Content-Type', 'application/json');
+//   // res.end('{"name": "hello"}');
+
+//   switch (req.method) {
+//     case 'GET':
+//       getUser(res);
+//       break;
+//     case 'POST':
+//       updateUser(req, res);
+//       break;
+//   }
+//   // fs.readFile('./user.json', (err, data) => {
+//   //   if (err) throw err;
+//   //   res.end(data);
+//   // })
+// });
+
+// server.listen(3000, '127.0.0.1', () => {
+//   console.log('Server is running');
+// })
+
+//express方法
+const express = require('express');
+const app = express();
 const fs = require('fs');
+const { nextTick } = require('process');
+const port = 3000;
 
-let server = http.createServer((req, res) => {
-  res.statusCode = '200';
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type"); 
-  res.setHeader('Content-Type', 'application/json');
-  // res.end('{"name": "hello"}');
+app.route('/')
+  .all((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type"); 
+    res.setHeader('Content-Type', 'application/json');
+    next();
+  })
+  .get((req, res) => {
+    getUser(res);
+  })
+  .post((req, res) => {
+    updateUser(req, res);
+  });
 
-  switch (req.method) {
-    case 'GET':
-      getUser(res);
-      break;
-    case 'POST':
-      updateUser(req, res);
-      break;
-  }
-  // fs.readFile('./user.json', (err, data) => {
-  //   if (err) throw err;
-  //   res.end(data);
-  // })
+app.listen(port, () => {
+  console.log('App server is running.');
 });
 
 async function readFileContent(filename) {
@@ -54,6 +83,3 @@ function updateUser(req, res) {
 
 }
 
-server.listen(3000, '127.0.0.1', () => {
-  console.log('Server is running');
-})

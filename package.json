@@ -1,0 +1,24 @@
+{
+  "name": "login-backend",
+  "version": "1.0.0",
+  "description": "用户注册与登录\r 后端",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henry-sev/login-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henry-sev/login-backend/issues"
+  },
+  "homepage": "https://github.com/henry-sev/login-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
